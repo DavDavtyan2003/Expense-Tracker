@@ -12,7 +12,7 @@ function TransactionList({
           className={`transaction ${transaction.type}`}
         >
           <span>
-            {transaction.description} - €{transaction.amount}
+            {transaction.description} - €{transaction.amount} ({transaction.category})
           </span>
 
           <button

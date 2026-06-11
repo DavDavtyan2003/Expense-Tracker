@@ -4,6 +4,8 @@ function TransactionForm({ addTransaction }) {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
   const [type, setType] = useState("income");
+  const [category, setCategory] = useState("salary");
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -11,18 +13,20 @@ function TransactionForm({ addTransaction }) {
     const transaction = {
       id: Date.now(),
       description,
+      category,
       amount: Number(amount),
       type,
     };
+
+    console.log(transaction)
 
     addTransaction(transaction);
 
     setDescription("");
     setAmount("");
     setType("income");
+    setCategory("salary");
   };
-
-  console.log(description);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -39,6 +43,14 @@ function TransactionForm({ addTransaction }) {
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
       />
+
+      <select
+        value={category}
+        onChange={(e) => setCategory(e.target.value)} 
+      >
+        <option value="salary">salary</option>
+        <option value="grocery">Grocery</option>
+      </select>
 
       <select
         value={type}
