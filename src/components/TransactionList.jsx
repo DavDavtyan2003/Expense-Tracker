@@ -20,8 +20,11 @@ function TransactionList({
           >
             Delete
           </button>
+
         </div>
       ))}
+
+
     </div>
   );
 }

@@ -3,39 +3,81 @@ import Balance from "./components/Balance";
 import TransactionForm from "./components/TransactionForm";
 import TransactionList from "./components/TransactionList";
 
-
 function App() {
-
   const [transactions, setTransactions] = useState([]);
+  const [filteredCategory, setFilteredCategory] = useState("all");
+
+  const filteredTransactions = transactions.filter((transaction) => {
+      if (filteredCategory === "all") {
+        return true;
+      }
+
+      return (
+      transaction.category ===
+      filteredCategory
+    );
+  });
 
   const addTransaction = (transaction) => {
-    setTransactions([...transactions, transaction]);
+    setTransactions([
+      ...transactions,
+      transaction,
+    ]);
   };
-  
-  const deleteTransaction = (id) => {
-  const updatedTransactions = transactions.filter(
-    (transaction) => transaction.id !== id
-  );
 
-  setTransactions(updatedTransactions);
-};
+  const deleteTransaction = (id) => {
+    const updatedTransactions =
+      transactions.filter(
+        (transaction) =>
+          transaction.id !== id
+      );
+
+    setTransactions(updatedTransactions);
+  };
 
   return (
-      <div className="container">
-        
-        <h1>Expense Tracker</h1>
+    <div className="container">
+      <h1>Expense Tracker</h1>
 
-        <Balance transactions={transactions} />
+      <Balance transactions={transactions} />
 
-        <TransactionForm addTransaction={addTransaction} />
+      <TransactionForm
+        addTransaction={addTransaction}
+      />
 
-        <TransactionList
-          transactions={transactions}
-          deleteTransaction={deleteTransaction}
-        />
+      <div>
+        <label>Filter by category: </label>
 
+        <select
+          value={filteredCategory}
+          onChange={(e) =>
+            setFilteredCategory(
+              e.target.value
+            )
+          }
+        >
+          <option value="all">
+            All
+          </option>
+          <option value="salary">
+            Salary
+          </option>
+          <option value="grocery">
+            Grocery
+          </option>
+        </select>
       </div>
-  )
+
+      <TransactionList
+        transactions={
+          filteredTransactions
+        }
+        deleteTransaction={
+          deleteTransaction
+        }
+      />
+    </div>
+  );
 }
 
-export default App
+export default App;
