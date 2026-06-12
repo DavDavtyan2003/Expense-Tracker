@@ -1,21 +1,36 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Balance from "./components/Balance";
 import TransactionForm from "./components/TransactionForm";
 import TransactionList from "./components/TransactionList";
 
 function App() {
-  const [transactions, setTransactions] = useState([]);
+  const [transactions, setTransactions] = useState(() => {
+    const stored = localStorage.getItem("transactions");
+      return stored ? JSON.parse(stored) : [];
+    });
   const [filteredCategory, setFilteredCategory] = useState("all");
+
+  useEffect(() => {
+    localStorage.setItem(
+      "transactions",
+      JSON.stringify(transactions)
+    );
+  }, [transactions]);
+
+  useEffect(() => {
+    const storedTransactions = localStorage.getItem("transactions");
+
+    if (storedTransactions) {
+      setTransactions(JSON.parse(storedTransactions));
+    }
+  }, []);
 
   const filteredTransactions = transactions.filter((transaction) => {
       if (filteredCategory === "all") {
         return true;
       }
-
-      return (
-      transaction.category ===
-      filteredCategory
-    );
+      
+      return (transaction.category === filteredCategory);
   });
 
   const addTransaction = (transaction) => {
