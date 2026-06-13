@@ -17,9 +17,9 @@ function Balance({ transactions }) {
     <div className="balance-card">
       <h2>Balance: €{balance}</h2>
 
-      <p>Income: €{income}</p>
+      <p className="income-text">Income: €{income}</p>
 
-      <p>Expenses: €{expenses}</p>
+      <p className="expense-text">Expenses: €{expenses}</p>
     </div>
   );
 }

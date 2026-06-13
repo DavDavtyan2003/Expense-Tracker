@@ -1,7 +1,8 @@
-function TransactionList({
-  transactions,
-  deleteTransaction,
-}) {
+function TransactionList({ transactions, deleteTransaction }) {
+  if (transactions.length === 0) {
+    return <p className="empty-state">No transactions yet — add one above!</p>;
+  }
+
   return (
     <div>
       {transactions.map((transaction) => (
@@ -9,20 +10,23 @@ function TransactionList({
           key={transaction.id}
           className={`transaction ${transaction.type}`}
         >
-          <span>
-            {transaction.description} - €{transaction.amount} ({transaction.category})
+          <div className="transaction-info">
+            <span>{transaction.description}</span>
+            <span className="category">{transaction.category}</span>
+          </div>
+
+          <span className="transaction-amount">
+            {transaction.type === "expense" ? "-" : "+"}€{transaction.amount}
           </span>
 
           <button
+            className="delete-btn"
             onClick={() => deleteTransaction(transaction.id)}
           >
-            Delete
+            ✕
           </button>
-
         </div>
       ))}
-
-
     </div>
   );
 }

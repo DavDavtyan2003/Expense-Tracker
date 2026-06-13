@@ -1,16 +1,36 @@
-# React + Vite
+# Expense Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple, responsive expense tracker built with React. Track your income and expenses, filter by category, and see your balance update in real time. Data is saved locally so it persists between visits.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+https://expense-tracker-teal-rho-47.vercel.app/
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Add transactions with description, amount, category, and type (income/expense)
+- Real-time balance, income, and expense totals
+- Filter transaction history by category
+- Form validation with inline error messages
+- Data persistence via localStorage
+- Responsive design (mobile-friendly)
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- CSS (custom styling, no framework)
+- localStorage for data persistence
+- Deployed on Vercel
+
+## Running Locally
+
+\`\`\`bash
+git clone https://github.com/DavDavtyan2003/Expense-Tracker.git
+cd Expense-Tracker
+npm install
+npm run dev
+\`\`\`
+
+## Screenshots
+
+![Expense Tracker Screenshot](screenshot.png)

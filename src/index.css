@@ -5,78 +5,228 @@
 }
 
 body {
-  background: #f2f3f5;
-  font-family: Inter, sans-serif;
-  color: #202020;
+  background: #eef0f3;
+  font-family: "Inter", sans-serif;
+  color: #1e1e1e;
+  min-height: 100vh;
 }
 
 .container {
   max-width: 600px;
   margin: 40px auto;
   background: #ffffff;
-  padding: 24px;
+  padding: 32px;
   border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 28px;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
+/* Balance card */
 .balance-card {
-  margin-bottom: 20px;
-  background: #202020;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, #1e1e2f, #3a3a5c);
   color: white;
   padding: 24px;
-  border-radius: 20px;
+  border-radius: 14px;
 }
 
 .balance-card h2 {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  font-size: 24px;
 }
 
+.balance-card p {
+  font-size: 14px;
+  opacity: 0.85;
+  margin-top: 4px;
+}
+
+.balance-card .income-text {
+  color: #8be28b;
+  font-weight: 600;
+}
+
+.balance-card .expense-text {
+  color: #f29ca0;
+  font-weight: 600;
+}
+
+/* Form */
 form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+
+.form-row select {
+  flex: 1;
 }
 
 input,
 select,
 button {
-  padding: 10px;
-  font-size: 16px;
+  padding: 12px 14px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-family: inherit;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #9bd83c;
+  box-shadow: 0 0 0 3px rgba(155, 216, 60, 0.2);
 }
 
 button {
   cursor: pointer;
+  border: none;
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+
+.submitBtn {
+  background-color: #9bd83c;
+  color: #1e1e1e;
+  padding: 12px;
+}
+
+.submitBtn:hover {
+  background-color: #8bc934;
+  transform: translateY(-1px);
+}
+
+.submitBtn:active {
+  transform: translateY(0);
+}
+
+/* Transaction history */
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 16px;
+}
+
+.history-header h2 {
+  font-size: 18px;
+}
+
+.history-header select {
+  width: auto;
 }
 
 .transaction {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 5px;
+  align-items: center;
+  padding: 12px 14px;
+  background: #f9f9fb;
+  border-left: 4px solid transparent;
+  transition: transform 0.15s ease;
+}
+
+.transaction:hover {
+  transform: scale(1.01);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.transaction-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.transaction-info .category {
+  font-size: 12px;
+  opacity: 0.7;
+  text-transform: capitalize;
+}
+
+.transaction-amount {
+  font-weight: 700;
+  font-size: 15px;
 }
 
 .income {
-  background: #d4edda;
+  border-left-color: #4caf50;
+}
+
+.income .transaction-amount {
+  color: #2e7d32;
 }
 
 .expense {
-  background: #f8d7da;
+  border-left-color: #e53935;
 }
 
-.submitBtn {
-  background-color: #c9f158;
+.expense .transaction-amount {
+  color: #c62828;
 }
 
-.history-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 30px;
-  margin-bottom: 20px;
+.delete-btn {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 16px;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.delete-btn:hover {
+  color: #c62828;
+  background: rgba(198, 40, 40, 0.1);
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 30px;
+  color: #999;
+  font-size: 14px;
+}
+
+.error {
+  color: #c62828;
+  background: #fdeaea;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* Responsive for Mobile */
+
+@media (max-width: 480px) {
+  .container {
+    margin: 20px 12px;
+    padding: 20px;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .history-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .history-header select {
+    width: 100%;
+  }
 }
