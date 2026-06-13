@@ -60,8 +60,9 @@ function App() {
         addTransaction={addTransaction}
       />
 
-      <div>
-        <label>Filter by category: </label>
+      <div className="history-header">
+        <h2>Transaction History</h2>
+        
 
         <select
           value={filteredCategory}

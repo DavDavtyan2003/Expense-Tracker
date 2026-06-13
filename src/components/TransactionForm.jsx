@@ -60,7 +60,7 @@ function TransactionForm({ addTransaction }) {
         <option value="expense">Expense</option>
       </select>
 
-      <button type="submit">
+      <button type="submit" className="submitBtn">
         Add Transaction
       </button>
     </form>

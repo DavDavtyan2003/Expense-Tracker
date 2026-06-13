@@ -4,8 +4,6 @@ function TransactionList({
 }) {
   return (
     <div>
-      <h2>Transaction History</h2>
-
       {transactions.map((transaction) => (
         <div
           key={transaction.id}
